@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import logo_img from "../img/logo.png"
+import logo_img from "../img/logo.png";
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
@@ -16,6 +16,8 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import { Link } from "react-router-dom";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Container =styled.div`
     flex:1;
     background-color: ${({theme}) => theme.bg};
@@ -45,11 +47,16 @@ const Item=styled.div`
     gap: 20px;
     cursor: pointer;
     padding: 7.5px 0px;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.soft};
+    }
 `;
 const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
+const Login = styled.div``;
 const Button = styled.button`
   padding: 5px 15px;
   background-color: transparent;
@@ -103,6 +110,14 @@ const Menu= ({darkMode, setDarkMode}) => {
           History
         </Item>
         <Hr />
+        <Login>
+          Sign in to like videos, comment, and subscribe.
+          <Link to="signin" style={{textDecoration:"none"}}>
+            <Button>
+              <AccountCircleIcon />
+              SIGN IN
+            </Button>
+          </Link></Login>
         <Hr />
         <Title>Trendings</Title>
         <Item>
@@ -121,14 +136,8 @@ const Menu= ({darkMode, setDarkMode}) => {
           <MovieOutlinedIcon />
           Movies
         </Item>
-        <Item>
-          <ArticleOutlinedIcon />
-          News
-        </Item>
-        <Item>
-          <LiveTvOutlinedIcon />
-          Live
-        </Item>
+        
+        
         <Hr />
          <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessIcon />
