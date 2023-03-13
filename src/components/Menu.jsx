@@ -15,13 +15,15 @@ import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 const Container =styled.div`
     flex:1;
-    background-color: #202020;
+    background-color: ${({theme}) => theme.bg};
     height: 100vh;
-    color: white;
+    color: ${({theme}) => theme.text};
     font-size: 14px;
+    position: sticky;
+    top: 0;
 `;
 const Wrapper =styled.div`
     padding: 18px 26px;
@@ -48,6 +50,20 @@ const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
+const Button = styled.button`
+  padding: 5px 15px;
+  background-color: transparent;
+  border: 1px solid #3ea6ff;
+  color: #3ea6ff;
+  border-radius: 3px;
+  font-weight: 500;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
 const Title = styled.h2`
   font-size: 14px;
   font-weight: 500;
@@ -57,7 +73,7 @@ const Title = styled.h2`
 
 
 
-const Menu= () => {
+const Menu= ({darkMode, setDarkMode}) => {
     return(
         <Container><Wrapper>
             <Logo>
@@ -88,7 +104,7 @@ const Menu= () => {
         </Item>
         <Hr />
         <Hr />
-        <Title>BEST OF LAMATUBE</Title>
+        <Title>Trendings</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -114,6 +130,10 @@ const Menu= () => {
           Live
         </Item>
         <Hr />
+         <Item onClick={() => setDarkMode(!darkMode)}>
+          <SettingsBrightnessIcon />
+          {darkMode ? "Light" : "Dark"} Mode
+        </Item>
         <Item>
           <SettingsOutlinedIcon />
           Settings
@@ -126,7 +146,7 @@ const Menu= () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-            
+       
             </Wrapper>
         </Container>
     )
