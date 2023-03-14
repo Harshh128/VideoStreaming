@@ -28,7 +28,7 @@ export const update = async (req, res, next) => {
         next(err);
       }
     } else {
-      return next(createError(403, "You can delete only your account!"));
+      return next(CreateError(403, "You can delete only your account!"));
     }
   };
   

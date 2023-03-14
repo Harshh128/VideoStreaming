@@ -19,4 +19,3 @@ const CommentSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("Comment", CommentSchema);
-Footer
